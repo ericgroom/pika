@@ -12,7 +12,33 @@ pub fn format(s: &str, option: FormatOption) -> String {
 }
 
 fn sponge(s: &str) -> String {
-    todo!()
+    enum Case { 
+        Upper, Lower
+    }
+    impl Case {
+        fn toggle(&mut self) {
+            match self {
+                Self::Upper => *self = Self::Lower,
+                Self::Lower => *self = Self::Upper,
+            }
+        }
+    }
+
+    let mut result = String::with_capacity(s.len());
+    let mut next_case = Case::Lower;
+    for c in s.chars() {
+        if c.is_alphabetic() {
+            match next_case {
+                Case::Upper => result.extend(c.to_uppercase()),
+                Case::Lower => result.extend(c.to_lowercase())
+            }
+            next_case.toggle()
+        } else {
+            result.push(c);
+        }
+    }
+
+    result
 }
 
 fn usa(s: &str) -> String {
