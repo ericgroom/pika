@@ -2,7 +2,7 @@ use clap::Clap;
 use pika::formatter::{format, FormatOption};
 
 #[derive(Clap)]
-#[clap(name = "clap", version = "0.1", author = "Eric Groom")]
+#[clap(name = "pika", version = "0.1", author = "Eric Groom")]
 struct Opts {
     #[clap(subcommand)]
     format: FormatSelection,
