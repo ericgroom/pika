@@ -12,6 +12,13 @@ categories = ["command-line-utilities"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[dev-dependencies]
+criterion = "0.3"
+
+[[bench]]
+name = "format"
+harness = false
+
 [workspace]
 members = [
     "pika_cli"
