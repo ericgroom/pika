@@ -1,7 +1,32 @@
 use pika::formatter::{format, FormatOption};
-use std::env;
+use clap::Clap;
+
+#[derive(Clap)]
+#[clap(version = "0.1", author = "Eric Groom")]
+struct Opts {
+    #[clap(subcommand)]
+    format: FormatSelection,
+}
+
+#[derive(Clap)]
+enum FormatSelection {
+    #[clap(name="sponge")]
+    Sponge(FormatData),
+    #[clap(name="usa")]
+    Usa(FormatData)
+}
+
+#[derive(Clap)]
+struct FormatData {
+    #[clap()]
+    input: String
+}
 
 fn main() {
-    let args: Vec<String> = env::args().collect();
-    println!("{:?}", format(&args[1], FormatOption::Sponge));
+    let opts = Opts::parse();
+    let formatted_text = match opts.format {
+        FormatSelection::Sponge(data) => format(&data.input, FormatOption::Sponge),
+        FormatSelection::Usa(data) => format(&data.input, FormatOption::Usa)
+    };
+    println!("{}", formatted_text);
 }
