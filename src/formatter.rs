@@ -42,7 +42,15 @@ fn sponge(s: &str) -> String {
 }
 
 fn usa(s: &str) -> String {
-    todo!()
+    let mut result = String::with_capacity(s.len() * 3);
+
+    for c in s.chars() {
+        result.extend(c.to_uppercase());
+        result.push_str("! ");
+    }
+    result.pop(); // removes final space
+
+    result
 }
 
 #[cfg(test)]
@@ -60,6 +68,6 @@ mod tests {
     fn test_usa() {
         let input = "wellidid";
         let expected_output = "W! E! L! L! I! D! I! D!";
-        assert_eq!(format(input, FormatOption::Sponge), expected_output);
+        assert_eq!(format(input, FormatOption::Usa), expected_output);
     }
 }
