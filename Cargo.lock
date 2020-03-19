@@ -3,3 +3,11 @@
 [[package]]
 name = "pika"
 version = "0.1.0"
+
+[[package]]
+name = "pika_cli"
+version = "0.1.0"
+dependencies = [
+ "pika 0.1.0",
+]
+
