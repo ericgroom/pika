@@ -1,6 +1,22 @@
-[workspace]
+[package]
+name = "pika"
+description = "A tool for formatting joke text"
+license = "MIT"
+version = "0.1.0"
+authors = ["Eric Groom"]
+repository = "https://github.com/ericgroom/pika"
+homepage = "https://github.com/ericgroom/pika"
+edition = "2018"
+keywords = ["format", "meme", "joke"]
+categories = ["command-line-utilities"]
 
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[workspace]
 members = [
-    "pika",
+    "pika_cli"
+]
+default-members = [
+    ".",
     "pika_cli"
 ]
