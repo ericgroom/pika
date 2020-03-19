@@ -70,4 +70,14 @@ mod tests {
         let expected_output = "W! E! L! L! I! D! I! D!";
         assert_eq!(format(input, FormatOption::Usa), expected_output);
     }
+
+    #[test]
+    fn test_sponge_empty() {
+        assert_eq!(format("", FormatOption::Sponge), "");
+    }
+
+    #[test]
+    fn test_usa_empty() {
+        assert_eq!(format("", FormatOption::Usa), "");
+    }
 }
